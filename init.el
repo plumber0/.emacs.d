@@ -44,8 +44,11 @@
 
 (setq inhibit-startup-message t)    ;; Hide the startup message
 (load-theme 'material t)            ;; Load material theme
-(global-linum-mode t)               ;; Enable line numbers globally
-
+(global-linum-mode t)               ;; Enable line numbers global
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
 ;; User-Defined init.el ends here
 
 
