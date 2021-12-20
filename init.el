@@ -26,6 +26,7 @@
     elpy                            ;; Emacs Lisp Python Environment
     magit                           ;; Git integration
     material-theme                  ;; Theme
+    flycheck                        ;; On the fly syntax checking
     )
   )
 
@@ -57,8 +58,16 @@
 ;; ====================================
 ;; Enable elpy
 (elpy-enable)
+;; Enable Flycheck
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-;; User-Defined init.el ends here
+(custom-set-variables
+ '(flycheck-python-flake8-executable "python3")
+ '(flycheck-python-pycompile-executable "python3")
+ '(flycheck-python-pylint-executable "python3"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
