@@ -6,6 +6,13 @@
 ;; Enables basic packaging support
 (require 'package)
 
+(prefer-coding-system 'utf-8)
+(menu-bar-mode -1)
+(setq-default indent-tabs-mode nil)
+(setq default-input-method "korean-hangul")
+(global-set-key (kbd "S-SPC") 'toggle-input-method)
+
+
 ;; Adds the Melpa archive to the list of available repositories
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
@@ -50,6 +57,17 @@
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
+(setq shell-file-name "bash")
+(setq shell-command-switch "-ic")
+
+
+(exec-path-from-shell-copy-env "PYTHONPATH")
+(exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
+(exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
+(exec-path-from-shell-copy-env "PATH")
+(exec-path-from-shell-copy-env "FRIDAY_METRICS_AUDIO_UTTERANCE_SEGMENTATION")
+
+
 ;; User-Defined init.el ends here
 
 
@@ -64,21 +82,20 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (custom-set-variables
- '(flycheck-python-flake8-executable "python3")
- '(flycheck-python-pycompile-executable "python3")
- '(flycheck-python-pylint-executable "python3"))
-
-(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit pdf-tools material-theme magit-section git-commit evil elpy better-defaults))))
+    (exec-path-from-shell magit pdf-tools material-theme magit-section git-commit evil elpy better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(set-fontset-font "fontset-default" '(#x1100 . #xffdc) '("MunanCoding" . "iso10646-1"))
+(setq face-font-rescale-alist
+      '((".*MunanCoding.*" . 1.1)))
