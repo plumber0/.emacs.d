@@ -60,14 +60,6 @@
 (setq shell-file-name "bash")
 (setq shell-command-switch "-ic")
 
-
-(exec-path-from-shell-copy-env "PYTHONPATH")
-(exec-path-from-shell-copy-env "AWS_ACCESS_KEY_ID")
-(exec-path-from-shell-copy-env "AWS_SECRET_ACCESS_KEY")
-(exec-path-from-shell-copy-env "PATH")
-(exec-path-from-shell-copy-env "FRIDAY_METRICS_AUDIO_UTTERANCE_SEGMENTATION")
-
-
 ;; User-Defined init.el ends here
 
 
